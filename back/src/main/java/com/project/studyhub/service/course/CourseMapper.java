@@ -23,7 +23,7 @@ public class CourseMapper {
     public Course map(CourseDto courseDto) {
         Course course = new Course();
         course.setId(courseDto.getId());
-        course.setName(courseDto.getName());
+        course.setName(courseDto.getTitle());
         return course;
     }
 
@@ -32,7 +32,6 @@ public class CourseMapper {
                 course.getId(),
                 course.getName(),
                 course.getTeacher().getUsername(),
-                course.getCourseMaterials().stream().map(materialMapper::map).collect(Collectors.toSet()),
                 course.getStudents().stream().map(AppUser::getUsername).collect(Collectors.toSet())
         );
     }

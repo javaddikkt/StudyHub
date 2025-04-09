@@ -1,21 +1,25 @@
 export interface CourseDto {
     id: number;
     title: string;
-    description?: string;
+}
+
+export interface CourseDetailsDto {
+    id: number;
+    title: string;
+    teacherUsername: string;
+    students: string[];
 }
 
 export interface MaterialDto {
-    id: number;
     title: string;
-    filename?: string;
+    data: string;
     type: "FILE" | "LINK" | "TEXT";
-    url?: string;
 }
 
 export interface EnrollmentRequestDto {
     id: number;
-    courseId: number;
-    studentUsername: string;
+    studentID: number;
+    courseName: string;
     status: "PENDING" | "APPROVED" | "REJECTED";
 }
 

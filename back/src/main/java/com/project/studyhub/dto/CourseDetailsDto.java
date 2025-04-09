@@ -4,16 +4,14 @@ import java.util.Set;
 
 public class CourseDetailsDto {
     private Long id;
-    private String name;
+    private String title;
     private String teacherUsername;
-    private Set<MaterialDto> materials;
     private Set<String> studentUsernames;
 
-    public CourseDetailsDto(Long id, String name, String teacherUsername, Set<MaterialDto> materials, Set<String> studentUsernames) {
+    public CourseDetailsDto(Long id, String title, String teacherUsername, Set<String> studentUsernames) {
         this.id = id;
-        this.name = name;
+        this.title = title;
         this.teacherUsername = teacherUsername;
-        this.materials = materials;
         this.studentUsernames = studentUsernames;
     }
 
@@ -25,12 +23,12 @@ public class CourseDetailsDto {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getTeacherUsername() {
@@ -39,14 +37,6 @@ public class CourseDetailsDto {
 
     public void setTeacherUsername(String teacherUsername) {
         this.teacherUsername = teacherUsername;
-    }
-
-    public Set<MaterialDto> getMaterials() {
-        return materials;
-    }
-
-    public void setMaterials(Set<MaterialDto> materials) {
-        this.materials = materials;
     }
 
     public Set<String> getStudentUsernames() {

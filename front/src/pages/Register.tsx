@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React, {useState} from "react";
+import {useNavigate, Link} from "react-router-dom";
 import api from "../api";
 import axios from "axios";
-import { Card, Button, Form, Alert } from "react-bootstrap";
+import {Card, Button, Form, Alert} from "react-bootstrap";
 
 export const Register = () => {
     const navigate = useNavigate();
@@ -11,12 +11,13 @@ export const Register = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState<string | null>(null);
+    const [role, setRole] = useState("STUDENT");
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError(null);
         try {
-            await api.post("/auth/registration", { username, password, confirmPassword });
+            await api.post("/auth/registration", {username, password, confirmPassword, role});
             setSuccess("Регистрация прошла успешно! Войдите в систему.");
             setTimeout(() => navigate("/login"), 1500);
         } catch (err: unknown) {
@@ -33,7 +34,7 @@ export const Register = () => {
 
     return (
         <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
-            <Card style={{ width: 380 }} className="shadow">
+            <Card style={{width: 380}} className="shadow">
                 <Card.Body>
                     <Card.Title className="text-center mb-4">Регистрация</Card.Title>
                     {error && <Alert variant="danger">{error}</Alert>}
@@ -64,6 +65,13 @@ export const Register = () => {
                                 onChange={(e) => setConfirmPassword(e.target.value)}
                                 required
                             />
+                        </Form.Group>
+                        <Form.Group className="mb-4">
+                            <Form.Label>Роль</Form.Label>
+                            <Form.Select value={role} onChange={(e) => setRole(e.target.value)}>
+                                <option value="STUDENT">Студент</option>
+                                <option value="TEACHER">Учитель</option>
+                            </Form.Select>
                         </Form.Group>
                         <Button type="submit" className="w-100">
                             Зарегистрироваться

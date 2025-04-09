@@ -1,5 +1,6 @@
 package com.project.studyhub.controller;
 
+import com.project.studyhub.dto.CourseDetailsDto;
 import com.project.studyhub.dto.CourseDto;
 import com.project.studyhub.service.course.CourseService;
 import com.project.studyhub.service.user.UserService;
@@ -30,8 +31,8 @@ public class CourseController {
     }
 
     @GetMapping("/{courseID}")
-    public ResponseEntity<CourseDto> getById(@PathVariable Long courseID) {
-        return ResponseEntity.ok(courseService.getCourse(courseID));
+    public ResponseEntity<CourseDetailsDto> getById(@PathVariable Long courseID) {
+        return ResponseEntity.ok(courseService.getCourseDetails(courseID));
     }
 
     @PostMapping("/create")

@@ -2,19 +2,19 @@ package com.project.studyhub.dto;
 
 public class CourseDto {
     private Long id;
-    private String name;
+    private String title;
 
-    public CourseDto(Long id, String name) {
-        this.name = name;
+    public CourseDto(Long id, String title) {
+        this.title = title;
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Long getId() {

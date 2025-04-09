@@ -24,12 +24,12 @@ export const EnrollmentRequests = () => {
 
     return (
         <div className="container py-4">
-            <h1 className="mb-4">Запросы на зачисление</h1>
+            <h1 className="mb-4">Приглашения на курсы</h1>
             {loading && <Spinner animation="border" />}
             <ListGroup>
                 {requests.map((req) => (
                     <ListGroup.Item key={req.id} className="d-flex justify-content-between align-items-center">
-                        Пользователь <strong>{req.studentUsername}</strong> просится в курс №{req.courseId}
+                        Приглашение на курс <strong>{req.courseName}</strong>
                         {req.status === "PENDING" ? (
                             <Button size="sm" onClick={() => confirm(req.id)}>Подтвердить</Button>
                         ) : (
