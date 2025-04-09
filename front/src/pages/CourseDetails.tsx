@@ -60,14 +60,16 @@ export const CourseDetails = () => {
     const uploadFile = async () => {
         if (!file && !data) return;
         const formData = new FormData();
-        formData.append("title", title || file.name);
-        formData.append("type", materialType);
-        if (materialType === "FILE") {
+        if (file) {
+            formData.append("title", title || file.name);
+            formData.append("type", materialType);
             formData.append("file", file);
             await api.post(`/materials/${id}/upload`, formData, {
                 headers: {"Content-Type": "multipart/form-data"},
             });
         } else {
+            formData.append("title", title);
+            formData.append("type", materialType);
             formData.append("data", data);
             await api.post(`/materials/${id}/upload`, formData);
         }
