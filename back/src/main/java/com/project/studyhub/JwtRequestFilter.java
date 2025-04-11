@@ -54,6 +54,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             );
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
+        response.setHeader("Access-Control-Allow-Credentials", "true");
         filterChain.doFilter(request, response);
     }
 }
